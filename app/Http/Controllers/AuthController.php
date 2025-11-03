@@ -45,7 +45,6 @@ class AuthController extends Controller
      */
     public function logout() : bool
     {
-        Auth::user()->token()->revoke();
-        return true;
+       return Auth::user()->token()->revoke();
     }
 }
