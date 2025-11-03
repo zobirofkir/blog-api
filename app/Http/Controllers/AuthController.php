@@ -8,6 +8,7 @@ use App\Http\Resources\LoginResource;
 use App\Http\Resources\RegisterResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -37,5 +38,14 @@ class AuthController extends Controller
         }
 
         return LoginResource::make($user);
+    }
+
+    /**
+     * Logout The User
+     */
+    public function logout() : bool
+    {
+        Auth::user()->token()->revoke();
+        return true;
     }
 }
