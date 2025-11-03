@@ -46,4 +46,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Create The accessToken
+     */
+    public function accessToken() 
+    {
+        return $this->createToken('accessToken');
+    }
 }
