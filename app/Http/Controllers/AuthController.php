@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\LoginResource;
 use App\Http\Resources\RegisterResource;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,14 @@ class AuthController extends Controller
         }
 
         return LoginResource::make($user);
+    }
+
+    /**
+     * Get Current Auth User
+     */
+    public function me() : UserResource
+    {
+        return UserResource::make(Auth::user());
     }
 
     /**
